@@ -1,0 +1,8 @@
+php -S localhost:8000 -t project
+
+*********project is your project folder************
+*********you must run this code in htdocs folder**************
+
+
+
+
