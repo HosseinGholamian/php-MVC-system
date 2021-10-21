@@ -20,4 +20,4 @@ The asset function generates a URL for an asset using the current scheme of the 
 retrun currently authenticated user
 ```php
     \System\Auth\Auth::user()->first_name;
-      ```
+```
