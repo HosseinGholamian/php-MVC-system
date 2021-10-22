@@ -1,5 +1,5 @@
 # php-MVC-system
-php MVC  framework like laravel
+php MVC  framework like laravel but simpler
 
 
 
