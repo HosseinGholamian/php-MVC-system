@@ -1,28 +1,28 @@
 # php-MVC-system
 php MVC  framework like laravel but simpler
 
-#Folders 
-####The assets of template must be located at 
+# Folders 
+#### The assets of template must be located at 
 ```
 public\
 ```
 
-####The controller of website must be located at:
+#### The controller of website must be located at:
 ```
 App\Http\Controllers
 ```
 
-####The Models Must be located at :
+#### The Models Must be located at :
 ```
 app\
 ```
 
-####Your template theme must be located at :
+#### Your template theme must be located at :
 ```
 recources\view\
 ```
 
-####The database configueation located at :
+#### The database configueation located at :
 ```
 config\database.php
 ```
@@ -38,7 +38,7 @@ return [
 ];
 ```
 
-###Blade Template
+### Blade Template
 Blade is a simple, yet powerful templating engine provided with Laravel. Unlike controller layouts, Blade is driven by template inheritance and sections. All Blade templates should use the .blade.php extension.
 
 Defining A Blade Layout
@@ -91,7 +91,7 @@ Route::delete("/delete/{id}", "HomeController@destroy", "delete");
 
 
 # Helpers 
-###route():\
+### route():\
 The route function generates a URL for a given named route:
 ```php
   $url = route('route.name');
@@ -100,12 +100,12 @@ If the route accepts parameters, you may pass them as the second argument to the
 ```php
   $url = route('route.name', ['id' =>1]);
   ```
-###asset()\
+### asset()\
 The asset function generates a URL for an asset using the current scheme of the request (HTTP or HTTPS):
 ```php
   $url = asset('img/photo.jpg');
   ```
- ###view()\
+ ### view()\
 The view function load a view instance that exists in resources/view:
 ```php
 return view('auth.login');
@@ -117,7 +117,7 @@ retrun currently authenticated user
     \System\Auth\Auth::user()->first_name;
 ```
 
-###Auth::check()\
+### Auth::check()\
 To determine if the user making the incoming HTTP request is authenticated, you may use the check method on the Auth facade. This method will return true if the user is authenticated:
 ```php
 use App\Http\Controllers\Controller;
