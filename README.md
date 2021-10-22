@@ -30,6 +30,7 @@ retrun currently authenticated user
     \System\Auth\Auth::user()->first_name;
 ```
 
+Auth::check()\
 To determine if the user making the incoming HTTP request is authenticated, you may use the check method on the Auth facade. This method will return true if the user is authenticated:
 ```php
 use App\Http\Controllers\Controller;
