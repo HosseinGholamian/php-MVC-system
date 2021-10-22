@@ -128,3 +128,11 @@ if (Auth::check()) {
 ```
 
 
+#### Authenticate A User By ID
+To log a user into the application by their ID, you may use the loginById method. This method accepts the primary key of the user you wish to authenticate:
+```php
+Auth::loginById(1);
+```
+
+
+
