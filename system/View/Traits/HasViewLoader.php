@@ -12,7 +12,7 @@ trait HasViewLoader
 
     private function viewLoader($dir)
     {
-        $dir = trim(" .", $dir);
+        $dir = trim( $dir, " .");
         $dir = str_replace(".", DIRECTORY_SEPARATOR, $dir);
         $baseViewDir = DIRECTORY_SEPARATOR . "resources" . DIRECTORY_SEPARATOR . "view" . DIRECTORY_SEPARATOR;
 
