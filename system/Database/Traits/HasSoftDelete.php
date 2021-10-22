@@ -33,7 +33,7 @@ trait HasSoftDelete
 
     protected function getMethod($array = [])
     {
-        if ($this->sql = '') {
+        if ($this->sql == '') {
             if (empty($array)) {
                 $fields = $this->getTableName() . ".*";
             } else {
