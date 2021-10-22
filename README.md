@@ -15,9 +15,16 @@ The asset function generates a URL for an asset using the current scheme of the 
 ```php
   $url = asset('img/photo.jpg');
   ```
-  
+ view()\
+The view function load a view instance that exists in resources/view:
+```php
+return view('auth.login');
+```
+ 
   \System\Auth\Auth::user()\
 retrun currently authenticated user
 ```php
     \System\Auth\Auth::user()->first_name;
 ```
+
+
