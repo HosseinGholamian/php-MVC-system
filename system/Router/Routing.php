@@ -14,7 +14,7 @@ class Routing
 
     public function __construct()
     {
-        $this->current_route = explode("/", Config::get("app.CURRENT_ROUT"));
+        $this->current_route = explode("/", Config::get("app.CURRENT_ROUTE"));
         $this->method_field = $this->methodField();
         global $routes;
         $this->routes = $routes;
