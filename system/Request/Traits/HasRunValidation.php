@@ -15,7 +15,7 @@ trait HasRunValidation
 
     protected function checkFirstError($name)
     {
-        if (!errorExist($name) && !in_array($name, $this->errorVariableName)) {
+        if (!errorExists($name) && !in_array($name, $this->errorVariableName)) {
             return true;
         }
         return false;
