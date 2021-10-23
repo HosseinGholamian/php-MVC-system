@@ -84,7 +84,7 @@ trait HasSoftDelete
         $data = $statment->fetch();
         $this->setAllowedMethods(['update', 'delete', 'find']);
         if ($data) {
-            return $this->arrayToAttribute($data);
+            return $this->arrayToAttributes($data);
         }
         return null;
     }
@@ -98,7 +98,7 @@ trait HasSoftDelete
 
         if ($id) {
             $this->resetQuery();
-            $object->findMethod($id);
+            $object = $this->findMethod($id);
         }
         if ($object) {
             $object->resetQuery();

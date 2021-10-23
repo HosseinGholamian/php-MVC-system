@@ -11,14 +11,14 @@ trait HasCRUD
     {
 
         $values = $this->arrayToCastEncodeValue($values);
-        $this->arrayToAttribute($values, $this);
+        $this->arrayToAttributes($values, $this);
         return $this->saveMethod();
     }
 
     protected function updateMethod($values)
     {
         $values = $this->arrayToCastEncodeValue($values);
-        $this->arrayToAttribute($values, $this);
+        $this->arrayToAttributes($values, $this);
         return $this->saveMethod();
     }
 
@@ -86,7 +86,7 @@ trait HasCRUD
         return $this;
     }
 
-    protected function whereIn($attribute, $values)
+    protected function whereInMethod($attribute, $values)
     {
         if (is_array($values)) {
 
@@ -182,9 +182,9 @@ trait HasCRUD
 
         $statment = $this->executeQuery();
         $data = $statment->fetch();
-        $this->setAllowedMethods(['update', 'delete', 'find']);
+        $this->setAllowedMethods(['update', 'delete', 'save']);
         if ($data) {
-            return $this->arrayToAttribute($data);
+            return $this->arrayToAttributes($data);
         }
         return null;
     }
