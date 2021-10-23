@@ -156,7 +156,7 @@ To log a user into the application by their ID, you may use the loginById method
 ```php
 Auth::loginById(1);
 ```
-#CKEDITOR
+# CKEDITOR
 ### use ckediroe by adding the code bellow :
 ```php
 @section('script')
