@@ -156,6 +156,18 @@ To log a user into the application by their ID, you may use the loginById method
 ```php
 Auth::loginById(1);
 ```
-
+#CKEDITOR
+### use ckediroe by adding the code bellow :
+```php
+@section('script')
+<script src="<?= asset('ckeditor/ckeditor.js') ?>"></script>
+<script type="text/javascript">
+    CKEDITOR.replace( 'body', {
+	filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+	filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+} );
+</script>
+@endsection
+```
 
 
