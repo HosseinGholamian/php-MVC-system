@@ -110,12 +110,35 @@ The view function load a view instance that exists in resources/view:
 ```php
 return view('auth.login');
 ```
+
+### old()
+The old function retrieves an old input value flashed into the session:
+```php
+$value = old('name');
+```
+
+### currentUrl()
+return The current url :
+```php
+$url = currentUrl();
+```
+
+### currentDomain()
+return the current domain base on http:// and https:// protocol:
+```php
+$url = currentDomain();
+```
+
+
+
 # Auth 
   \System\Auth\Auth::user()\
 retrun currently authenticated user
 ```php
     \System\Auth\Auth::user()->first_name;
 ```
+
+
 
 ### Auth::check()
 To determine if the user making the incoming HTTP request is authenticated, you may use the check method on the Auth facade. This method will return true if the user is authenticated:
