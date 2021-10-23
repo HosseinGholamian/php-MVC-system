@@ -6,7 +6,7 @@ use System\Database\DBConnection\DBConnection;
 
 trait HasQueryBuilder
 {
-    protected $sql = '';
+    private $sql = '';
     protected $where = [];
     private $orderBy = [];
     private $limit = [];

@@ -16,7 +16,7 @@ trait HasSoftDelete
         $currentPage = max($currentPage, 1);
         $currentRow = ($currentPage - 1) * $perPage;
         $this->setLimit($currentRow, $perPage);
-        if ($this->sql = '') {
+        if ($this->getSql() == '') {
             $this->setSql("SELECT " . $this->getTableName() . ".* FROM " . $this->getTableName());
         }
         $statment = $this->executeQuery();
@@ -33,7 +33,7 @@ trait HasSoftDelete
 
     protected function getMethod($array = [])
     {
-        if ($this->sql == '') {
+        if ($this->getSql() == '') {
             if (empty($array)) {
                 $fields = $this->getTableName() . ".*";
             } else {
