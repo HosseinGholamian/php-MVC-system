@@ -142,12 +142,25 @@ trait HasValidationRules
                 $rule = str_replace("exists:", "", $rule);
                 $rule = explode(",", $rule);
                 $key = isset($rule[1]) == false ? null : $rule[1];
-
                 $this->existIn($name, $rule[0], $key);
+            }
+            
+            elseif (strpos("unique:", $rule) === 0) {
+                $rule = str_replace("unique:", "", $rule);
+                $rule = explode(",", $rule);
+                $key = isset($rule[1]) == false ? null : $rule[1];
+
+                $this->unique($name, $rule[0], $key);
+
+
+
             } elseif ($rule == "email") {
                 $this->email($name);
             } elseif ($rule == "date") {
                 $this->date($name);
+            }
+             elseif ($rule == "confirmed") {
+                $this->confirm($name);
             }
         }
     }
