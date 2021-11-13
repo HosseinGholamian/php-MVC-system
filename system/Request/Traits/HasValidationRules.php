@@ -81,7 +81,7 @@ trait HasValidationRules
     }
 
 
-    public function existsIn($name, $table, $field = 'id')
+    public function existIn($name, $table, $field = 'id')
     {
         if ($this->checkFeildExist($name)) {
             if ($this->checkFirstError($name)) {
