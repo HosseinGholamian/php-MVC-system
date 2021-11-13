@@ -97,6 +97,35 @@ trait HasValidationRules
         }
     }
 
+    public function unique($name, $table, $field = 'id')
+    {
+        if ($this->checkFeildExist($name)) {
+            if ($this->checkFirstError($name)) {
+                $value = $this->$name;
+                $sql = "SELECT COUNT(*) FROM $table WHERE $field = ?";
+                $statement = DBConnection::getDBConnectionInstance()->prepare($sql);
+                $statement->execute([$value]);
+                $result = $statement->fetchColumn();
+                if ($result != 0 ) {
+                    $this->setError($name, "$name must be unique");
+                }
+            }
+        }
+    }
+
+    public function confirm($name)
+    {
+        if ($this->checkFeildExist($name)) {
+            $fieldName = "confirm_".$name;
+            if(!isset($fieldName)){
+                $this->setError($name , " $name not exists");
+            }
+
+            if($this->$name != $this->$fieldName){
+                $this->setError($name , " $name confirmation does not match");
+            }
+        }
+    }
 
     public function normalValidation($name, $ruleArray)
     {
