@@ -54,9 +54,13 @@ function flash($name, $message = null)
 }
 
 
-function flashExist($name)
+function flashExist($name = null)
 {
-    return isset($_SESSION['temporary_flash'][$name]) === true ? true : false;
+    if ($name == null) {
+        return isset($_SESSION["temporary_errorFlash"]) === true ? count($_SESSION["temporary_errorFlash"]) : false;
+    } else {
+        return isset($_SESSION["temporary_errorFlash"][$name]) === true ? true : false;
+    }
 }
 
 function allFlashes()

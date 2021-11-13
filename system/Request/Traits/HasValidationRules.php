@@ -106,7 +106,7 @@ trait HasValidationRules
                 $statement = DBConnection::getDBConnectionInstance()->prepare($sql);
                 $statement->execute([$value]);
                 $result = $statement->fetchColumn();
-                if ($result != 0 ) {
+                if ($result != 0) {
                     $this->setError($name, "$name must be unique");
                 }
             }
@@ -116,13 +116,13 @@ trait HasValidationRules
     public function confirm($name)
     {
         if ($this->checkFeildExist($name)) {
-            $fieldName = "confirm_".$name;
-            if(!isset($fieldName)){
-                $this->setError($name , " $name not exists");
+            $fieldName = "confirm_" . $name;
+            if (!isset($fieldName)) {
+                $this->setError($name, " $name not exists");
             }
 
-            if($this->$name != $this->$fieldName){
-                $this->setError($name , " $name confirmation does not match");
+            if ($this->$name != $this->$fieldName) {
+                $this->setError($name, " $name confirmation does not match");
             }
         }
     }
@@ -143,23 +143,17 @@ trait HasValidationRules
                 $rule = explode(",", $rule);
                 $key = isset($rule[1]) == false ? null : $rule[1];
                 $this->existIn($name, $rule[0], $key);
-            }
-            
-            elseif (strpos("unique:", $rule) === 0) {
+            } elseif (strpos("unique:", $rule) === 0) {
                 $rule = str_replace("unique:", "", $rule);
                 $rule = explode(",", $rule);
                 $key = isset($rule[1]) == false ? null : $rule[1];
 
                 $this->unique($name, $rule[0], $key);
-
-
-
             } elseif ($rule == "email") {
                 $this->email($name);
             } elseif ($rule == "date") {
                 $this->date($name);
-            }
-             elseif ($rule == "confirmed") {
+            } elseif ($rule == "confirmed") {
                 $this->confirm($name);
             }
         }
