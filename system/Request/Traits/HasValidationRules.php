@@ -127,29 +127,33 @@ trait HasValidationRules
         }
     }
 
+
+    
     public function normalValidation($name, $ruleArray)
     {
         foreach ($ruleArray as $rule) {
+
             if ($rule == "required") {
                 $this->required($name);
+            } elseif (strpos($rule, "unique:") === 0) {
+                $rule = str_replace('unique:', "", $rule);
+                $rule = explode(',', $rule);
+                $key = isset($rule[1]) == false ? null : $rule[1];
+                $this->unique($name, $rule[0], $key);
             } elseif (strpos($rule, "max:") === 0) {
                 $rule = str_replace("max:", "", $rule);
                 $this->maxStr($name, $rule);
-            } elseif (strpos("min:", $rule) === 0) {
+            } elseif (strpos($rule, "min:") === 0) {
                 $rule = str_replace("min:", "", $rule);
                 $this->minStr($name, $rule);
-            } elseif (strpos("exist:", $rule) === 0) {
+            } elseif (strpos($rule, "exist:") === 0) {
                 $rule = str_replace("exists:", "", $rule);
                 $rule = explode(",", $rule);
                 $key = isset($rule[1]) == false ? null : $rule[1];
-                $this->existIn($name, $rule[0], $key);
-            } elseif (strpos("unique:", $rule) === 0) {
-                $rule = str_replace("unique:", "", $rule);
-                $rule = explode(",", $rule);
-                $key = isset($rule[1]) == false ? null : $rule[1];
 
-                $this->unique($name, $rule[0], $key);
+                $this->existIn($name, $rule[0], $key);
             } elseif ($rule == "email") {
+
                 $this->email($name);
             } elseif ($rule == "date") {
                 $this->date($name);
@@ -168,10 +172,10 @@ trait HasValidationRules
             } elseif (strpos($rule, "max:") === 0) {
                 $rule = str_replace("max:", "", $rule);
                 $this->maxNumber($name, $rule);
-            } elseif (strpos("min:", $rule) === 0) {
+            } elseif (strpos($rule, "min:") === 0) {
                 $rule = str_replace("min:", "", $rule);
                 $this->minNumber($name, $rule);
-            } elseif (strpos("exist:", $rule) === 0) {
+            } elseif (strpos($rule, "exist:") === 0) {
                 $rule = str_replace("exists:", "", $rule);
                 $rule = explode(",", $rule);
                 $key = isset($rule[1]) == false ? null : $rule[1];
